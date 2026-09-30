@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Git vežba</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 0 16px;
+      line-height: 1.6;
+      color: #1f2933;
+      background: #f5f7fa;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      border-bottom: 1px solid #d9e2ec;
+    }
+    nav a { margin-left: 12px; color: #2563eb; }
+    form { display: flex; gap: 8px; }
+    input { flex: 1; padding: 8px; }
+    button { padding: 8px 16px; cursor: pointer; }
+    li button { margin-left: 8px; padding: 2px 8px; }
+    footer { margin-top: 40px; color: #7b8794; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Moja Git vežba</h1>
+    <nav>
+      <a href="#o-meni">O meni</a>
+      <a href="#lista">Lista</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="o-meni">
+      <h2>O meni</h2>
+      <p>Ovde napiši nešto o sebi. Svaka izmena ovog teksta je dobra prilika za novi commit.</p>
+    </section>
+
+    <section id="lista">
+      <h2>Lista zadataka</h2>
+      <form id="forma">
+        <input id="unos" type="text" placeholder="Novi zadatak" required>
+        <button type="submit">Dodaj</button>
+      </form>
+      <ul id="zadaci"></ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>Git vežba · ITEH</p>
+  </footer>
+
+  <script>
+    const forma = document.getElementById('forma')
+    const unos = document.getElementById('unos')
+    const zadaci = document.getElementById('zadaci')
+
+    forma.addEventListener('submit', (e) => {
+      e.preventDefault()
+
+      const li = document.createElement('li')
+      li.textContent = unos.value
+
+      const obrisi = document.createElement('button')
+      obrisi.textContent = 'Obriši'
+      obrisi.addEventListener('click', () => li.remove())
+
+      li.appendChild(obrisi)
+      zadaci.appendChild(li)
+      unos.value = ''
+    })
+  </script>
+</body>
+</html>
